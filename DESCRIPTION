@@ -1,0 +1,14 @@
+Package: semmel
+Type: Package
+Title: Shiny app to allocate seminar topics
+Version: 0.2
+Date: 2021-02-09
+Author: Sebastian Kranz
+Maintainer: Sebastian Kranz <sebastian.kranz@uni-ulm.de>
+Description: Shiny app to allocate seminar topics
+License: GPL >= 2.0
+LazyData: TRUE
+Depends: stringtools, restorepoint, dplyr, tidyr, clue,digest,
+         shiny, shinyEvents, shinythemes, lubridate,
+         sparkline, sendmailR, dbmisc, htmltools, jsonlite,glue
+Suggests: writexl, officer

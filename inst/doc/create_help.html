@@ -1,0 +1,169 @@
+<h1 class="title toc-ignore">Semmel Help</h1>
+
+
+<div id="TOC">
+<ul>
+<li>Frequently Asked Questions</li>
+<li><a href="#allocation-mechanisms">The allocation mechanisms</a>
+<ul>
+<li><a href="#truthful-revelation-random-serial-dictatorship">1. Truthful Revelation: Random Serial Dictatorship</a></li>
+<li><a href="#minimizing-a-cost-function">2. Minimizing A Cost Function</a></li>
+<li><a href="#comparing-random-serial-dictatorship-with-cost-minimization-algorithms">Comparing Random Serial Dictatorship with Cost Minimization Algorithms</a></li>
+</ul>
+</li>
+
+</ul>
+</div>
+
+<div id="faq" class="section level1">
+<h1>Frequently Asked Questions</h1>
+</div>
+
+<ul>
+<li class="qu">
+What is the effect of setting a deadline? Can I change or disable a deadline later?
+</li>
+<li class="ans">
+<p>If the deadline expires students cannot access the ranking page anymore. At the results page, you can modify the deadline. Note that the deadline is measured in Central European Time. If your are from a different time zone, you may just set an informal deadline in your email to the students.</p>
+</li>
+
+<li class="qu">
+Can I have a different number of slots for different topics? Can I later change the number of slots, after I know which topics are most attractive?
+</li>
+<li class="ans">
+<p>For example, write '#5 My Topic' to set the number of slots of 'My Topic' to 5. You can also later change the number of slots per topic. Go to the results website and click on "Options" in the menu bar on the right.
+</p>
+</li>
+
+</ul>
+
+
+<div id="allocation-mechanisms" class="section level1">
+<h1>The allocation mechanisms</h1>
+</div>
+
+<p>If your are interested, here is a short overview of the allocation mechanisms, you can use. You don't have to pick a mechanism when you create your allocation task, but just can pick one with the result you like most after all students have submitted their choices.</p>
+
+<div id="truthful-revelation-random-serial-dictatorship" class="section level2">
+<h2>1. Truthful Revelation: Random Serial Dictatorship</h2>
+<p>Random serial dictatorship is a simple mechanism that probably comes first to mind to most microeconomists:</p>
+<ol style="list-style-type: decimal">
+<li>Each Student orders all topics from most preferred to least preferred.</li>
+<li>Then the algorithm moves through all students in a purely random order. Each student gets her most preferred topic from the set of all topics that have not yet been given to a student earlier.</li>
+</ol>
+<p><strong>Advantage:</strong> With this algorithm, it is in the best interest for each student to order all topics according to her true preferences. It relieves students from all worries about strategizing: just state the truth.</p>
+<p><strong>Drawback:</strong> An outcome under random serial dictatorship is not neccesarily optimal if we assign numeric welfare levels to different allocations, e.g. when we would prefer allocations in which each student gets one of her top-3 ranked topics.</p>
+</div>
+
+<div id="minimizing-a-cost-function" class="section level2">
+<h2>2. Minimizing A Cost Function</h2>
+<p>The following cost minimization mechanism may appear most natural to the operations research community.</p>
+<ol style="list-style-type: decimal">
+<li>Each Student orders all topics from most preferred to least preferred.</li>
+<li>We assign a cost to every allocated student-topic pair. Natural choices would be that the cost is the position at which the student has ranked the topic or the square of that position.</li>
+<li>We now find an allocation that minimizes the sum of costs over all students.</li>
+</ol>
+<p>The minimization problem in step 3 is a classic optimization problem, known as the <code>Linear Assignment Problem</code> and can for example be solved in polynomial time by the <a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian Algorithm</a>.</p>
+<p>We consider 3 different cost functions. In every cost function the cost of a student-topic matching only depends on the rank at which the student has ranked that topic. The table shows the associated costs:</p>
+<table class="simple-table">
+<thead>
+<tr class="header">
+<th>Rank of Topic:</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linear Cost:</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>...</td>
+</tr>
+<tr class="even">
+<td>Quadratic Cost:</td>
+<td>1</td>
+<td>4</td>
+<td>9</td>
+<td>16</td>
+<td>25</td>
+<td>36</td>
+<td>49</td>
+<td>64</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td>3-5 Cost:</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1000</td>
+<td>1500</td>
+<td>60000</td>
+<td>70000</td>
+<td>80000</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Note: The 3-5 cost rule tries to give all students a topic among their top-3 topics or, if not feasible, at least among the top-5 topics.</p>
+</div>
+<div id="comparing-random-serial-dictatorship-with-cost-minimization-algorithms" class="section level2">
+<h2>Comparing Random Serial Dictatorship with Cost Minimization Algorithms</h2>
+<p>To see why cost-minimization mechanism may be preferable to random serial dictatorship, consider the following example with three students that truthfully state their preferences over three topics.</p>
+
+<table class="simple-table">
+<thead>
+<tr class="header">
+<th>costs</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Anna</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Bob</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>Carla</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Anna and Bob share the preference ordering <code>A, B, C</code> over the three topics. Carla's preferences <code>A, C, B</code> just differ by prefering C over B. The table shows the cost for each student-topic match. Here, the decision maker specified that the cost of a match is equal to the position of the topic in the student’s ranking.</p>
+<p>If we want to minimize the total cost, it is optimal to always give topic C to Carla and give topics A and B to Anna and Bob. Total cost would then be</p>
+<p>1.5+1.5+2=5</p>
+<p>In contrast, with the random serial dictatorship Carla also gets topic A with probability 1/3, in which case Anna or Bob get their least desired topic C. Expected total cost would then be higher:</p>
+<p>1/3 ((1+2+2.5)+(1+2+2.5)+(1+2+2)) = 5,33</p>
+<p>Does this mean that is always optimal to use the cost minimization mechanism if want to minimize a specific cost function? Not neccessarily.</p>
+<p>Assume that Carla actually prefers a lottery in which she gets A, C and B each with probability 1/3 than getting her second choice C for sure. Then in the cost-minimization mechanism Carla would benefit from misrepresenting her preferences in our example and state the preference order <code>A,B,C</code>. Since then all students stated the same preferences, the cost minimization mechanism cannot do better than to assign each topic to each student with probability 1/3. Expected cost under the misrepresented preferences would then be</p>
+<p>2+2+2=6.</p>
+<p>We would then have a worse outcome than under random serial dictatorship where it is optimal to state preferences truthfully.</p>
+<p>So which mechanism is better? There is no clear answer. It depends.</p>
+</div>
+

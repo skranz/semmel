@@ -1,0 +1,149 @@
+.home-outer {
+  width: 100%;
+  text-align: center;
+}
+
+.home-inner {
+  display: inline-block;
+}
+
+#app_create_2_div .shiny-input-container {
+  width: 100%;
+
+}
+
+#new-alloc-1 textarea {
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: scroll;
+
+  -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+  -moz-box-sizing: border-box; /* FF1+ */
+  box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
+
+#parsedTopics ol  {
+  padding-left: 2em;
+  padding-right: 0em;
+
+}
+
+tr.create-options .checkbox {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.rank-table th {
+  font-weight: bold;
+  margin: 3px;
+  padding: 3px;
+  //border: solid 1px black;
+  text-align: center;
+}
+
+.rank-table td {
+  font-family: Verdana,Geneva,sans-serif;
+  margin: 0px 3px 1px 3px;
+  padding: 1px 3px 1px 3px;
+  // border-left: solid 1px black;
+  // border-right: solid 1px black;
+  border-top: solid 1px black;
+  text-align: left;
+}
+
+.simple-td-bottom {
+  border-bottom: solid 1px black;
+}
+
+.rank-table tbody>tr:last-child td, , .simple-table  tbody>tr:last-child td{
+  border-bottom: solid 1px black;
+}
+
+.striped-table tr:nth-child(odd) {
+  background: #EEE
+}
+
+.striped-table th {
+  background: #FFF
+}
+
+.rank-table tr.sel-row td, .simple-table tr.sel-row td{
+  background: #FF8 !important;
+}
+
+.rank-table .col-1 {
+  font-weight: bold;
+  border-left: solid 1px black;
+}
+
+
+.rank-table .col-2 {
+  margin: 0px 1px 1px 3px;
+  padding: 1px 1px 1px 3px;
+}
+.rank-table .col-3 {
+  margin: 0px 3px 1px 1px;
+  padding: 1px 3px 1px 1px;
+}
+
+.rank-table .col-4 {
+  border-right: solid 1px black;
+}
+
+.rank-table tr.topn {
+  background: #DDF;
+}
+
+
+.simple-table td{
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  border-top: solid 1px black;
+  margin: 0px 3px 1px 3px;
+  padding: 1px 3px 1px 3px;
+  text-align: left;
+  font-size: 80%;
+}
+
+.simple-table th {
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  border-top: solid 1px black;
+  margin: 0px 3px 1px 3px;
+  padding: 1px 3px 1px 3px;
+  text-align: center;
+  font-size: 80%;
+}
+
+.simple-table  tbody>tr:last-child td{
+  border-bottom: solid 1px black;
+}
+
+.count-table th.col-1 {
+  border-right: solid 0px black;
+}
+.count-table th.col-2 {
+  border-left: solid 0px black;
+}
+
+.count-table .col-1 {
+  font-weight: bold;
+  //font-size: 100%;
+}
+
+
+.slots-table .slots-input {
+  width: 4em;
+}
+
+.stud-table .inactive, .simple-table .inactive {
+  background: #CCC;
+}
+
+.simple-table .fixed-topic {
+  background: #DDF;
+}
+
+tr.top-empty, tr.ranked {
+  display:none;
+}

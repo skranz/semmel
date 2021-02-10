@@ -1,0 +1,69 @@
+# dbmisc::dbCreateSQLiteFromSchema(system.file("schema/taddledb.yaml", package="taddleapp"),db.name = "taddledb.sqlite",db.dir = "D:/libraries/taddle/shared/db")
+
+# dbmisc::dbCreateSQLiteFromSchema(system.file("schema/taddledb.yaml", package="taddleapp"),db.name = "taddledb.sqlite",db.dir = "D:/libraries/taddle/taddle-test/shared/db")
+
+tat:
+  table:
+    tatid: CHARACTER(20)
+    rankkey: CHARACTER(20)
+    title: VARCHAR(200)
+    email: VARCHAR(50)
+    agree: BOOLEAN
+    org_method: CHARACTER(10)
+    method: CHARACTER(10)
+    deadline: DATETIME
+    deadline_type: CHARACTER(2)
+    topn: INTEGER
+    order_choice: CHARACTER(1)
+    random_order: INTEGER
+    descr: TEXT
+    def_slots: INTEGER
+    status: CHARACTER(2)
+    create_time: DATETIME
+    random_seed: INTEGER
+  index:
+    - tatid
+    - rankkey
+
+
+topic:
+  table:
+    tatid: CHARACTER(20)
+    pos: INTEGER
+    topic: TEXT
+    slots: INTEGER
+  index:
+    - tatid
+
+student:
+  table:
+    tatid: CHARACTER(20)
+    studkey: CHARACTER(20)
+    studemail: VARCHAR(50)
+    studname: VARCHAR(30)
+    first_ranking: DATETIME
+    last_ranking: DATETIME
+    num_ranking: INTEGER
+    active: BOOLEAN
+    fixed_pos: INTEGER
+  index:
+    - tatid, studemail
+    - studkey
+
+ranking:
+  table:
+    tatid: CHARACTER(20)
+    studemail: VARCHAR(50)
+    pos: INTEGER
+    shownpos: INTEGER
+    rank: INTEGER
+  index:
+    - tatid, studemail
+
+#questions:
+#  table:
+#    tatid: CHARACTER(20)
+#    tattype: CHARACTER(2)
+#    subject: CHARACTER(6)
+#  index:
+#    - tatid
