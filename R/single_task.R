@@ -1,5 +1,5 @@
 examples.single.task = function() {
-  library(taddleapp)
+  library(semmel)
   restore.point.options(display.restore.point=TRUE)
   setwd("C:/libraries/taddle/")
 

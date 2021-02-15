@@ -125,8 +125,6 @@ res.home.ui = function(...,tat=app$tat, app=getApp(), glob=app$glob) {
     setUI("resUI", res.ui)
   #}
 
-  #setUI("optUI", res.options.ui(tat))
-
   #setUI("mainUI", ui)
   ui
 }
@@ -726,7 +724,7 @@ alloc.word.report = function(out.file, alloc.df, tat = app$tat, app=getApp()) {
   strings = app$glob$strings
 
   library(officer)
-  tpl.file = system.file("tpl/alloc_tpl.docx", package="taddleapp")
+  tpl.file = system.file("tpl/alloc_tpl.docx", package="semmel")
   tab_style = "Plain Table 2"
   doc = read_docx(tpl.file)
   doc = doc %>%

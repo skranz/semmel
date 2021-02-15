@@ -214,7 +214,7 @@ show.rank.ui = function(tat = app$tat, app=getApp()) {
   glob = app$glob
 
   if (is.null(glob$rank_info)) {
-    dir = system.file("methods", package="taddleapp")
+    dir = system.file("methods", package="semmel")
     glob$rank_info =list(
       serialdict=paste0(readLines(file.path(dir,"methods_rank_serialdict.html"),warn = FALSE), collapse="\n"),
       no= paste0(readLines(file.path(dir,"methods_rank_no.html"),warn = FALSE), collapse="\n")
@@ -354,7 +354,7 @@ rank.topn.table.ui = function(tat = app$tat, app=getApp()) {
   )
 
   ui = tagList(
-    includeCSS(system.file("www/topn.css", package="taddleapp")),
+    includeCSS(system.file("www/topn.css", package="semmel")),
     HTML(descr),
     fluidRow(
       column(width = 4,
@@ -421,7 +421,7 @@ rank.some.table.ui = function(tat = app$tat, app=getApp(), table.ui.function = N
 
   if (is.null(table.ui.function)) {
     ui = tagList(
-      includeCSS(system.file("www/topn.css", package="taddleapp")),
+      includeCSS(system.file("www/topn.css", package="semmel")),
       HTML(descr),
       fluidRow(
         column(width = 4,

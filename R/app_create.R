@@ -1,5 +1,5 @@
 examples.taddleApp = function() {
-  library(taddleapp)
+  library(semmel)
   restore.point.options(display.restore.point=TRUE)
   setwd("C:/libraries/taddle/")
   app = taddleApp("C:/libraries/taddle/shared")
@@ -106,9 +106,9 @@ new.step2.ui = function(...,tat=app$tat, app=getApp(), glob=app$glob) {
     #uiOutput("methodDescr"),
     selectInput("order_choice", "How are topics shown?",
       list(
-        #"- Both is fine. To further scientific progress, Semmel can decide via a randomized experiment."="e",
-        "- Randomly shuffle the order of topics for each student."="r",
-        "- Show topics in the original order."="o")),
+        #"Both is fine. To further scientific progress, Semmel can decide via a randomized experiment."="e",
+        "Randomly shuffle the order of topics for each student."="r",
+        "Show topics in the original order."="o")),
     simpleButton("back2Btn","Back", form.ids = c("deadline_date","deadline_time","method","email", "agree")),
     simpleButton("cont2Btn","Continue", form.ids = c("titleInput","topicsInput"))
   ))
@@ -202,7 +202,7 @@ submit.new.tat = function(..., tat=app$tat, app=getApp(), glob=app$glob) {
 
   if (tat$order_choice == "o") {
     tat$random_order = 0 # never shuffle topics
-  } else if (tat$order_choice == "s") {
+  } else if (tat$order_choice == "r" | tat$order_choice == "s") {
     tat$random_order = 100 # always shuffle topics
   } else if (tat$order_choice=="e") {
     # randomized experiment
@@ -295,13 +295,17 @@ parse.topic.text = function(topic.text, multi.line = FALSE, def_slots=1) {
 }
 
 topics.md2html = function(topics) {
+  restore.point("topics.md2html")
 
   txt = gsub("](","](t0Ab3L",topics,fixed=TRUE)
-  cat(txt)
-  html = markdown::markdownToHTML(text = txt,options =  c("skip_html"),fragment.only = TRUE)
-  html = gsub('href="t0Ab3L','"target="_blank" href="', html, fixed = TRUE)
+  html = sapply(txt,function(s) {
+    markdown::markdownToHTML(text=s,options =  c("skip_html"),fragment.only = TRUE)
+  })
+  html = gsub('href="t0Ab3L','class="topic_link" target="_blank" href="', html, fixed = TRUE)
   html = gsub('t0Ab3L','', html, fixed = TRUE)
-  topics
+  html = gsub('<p>','', html, fixed = TRUE)
+  html = gsub('</p>','', html, fixed = TRUE)
+  html
 }
 
 verify.tat = function(tat) {
@@ -331,7 +335,7 @@ create.help.ui = function(app=getApp(), glob=app$glob) {
   restore.point("create.help.ui")
 
   if (is.null(glob$create.help.ui)) {
-    file = system.file("doc/create_help.html", package="taddleapp")
+    file = system.file("doc/create_help.html", package="semmel")
     html = paste0(readLines(file,warn = FALSE), collapse="\n")
     glob$create.help.ui = HTML(html)
   }

@@ -32,11 +32,11 @@ taddleApp = function(taddle.dir, db.dir = file.path(taddle.dir, "db"), email.sen
   glob$log.dir = file.path(taddle.dir,"logs")
 
   glob$db = dbConnect(RSQLite::SQLite(), file.path(glob$db.dir, "taddledb.sqlite"))
-  glob$db = set.db.schemas(glob$db, schema.file = system.file("schema/taddledb.yaml", package="taddleapp"))
+  glob$db = set.db.schemas(glob$db, schema.file = system.file("schema/taddledb.yaml", package="semmel"))
 
-  #sets = read.yaml(system.file("yaml/sets.yaml", package="taddleapp"))
+  #sets = read.yaml(system.file("yaml/sets.yaml", package="semmel"))
   #glob$sets = lapply(sets,unlist)
-  glob$sets = readRDS(system.file("yaml/sets.Rds", package="taddleapp"))
+  glob$sets = readRDS(system.file("yaml/sets.Rds", package="semmel"))
   glob$sets$method = glob$sets$method[!glob$sets$method %in% ignore.methods]
   if (!is.null(just.methods)) {
     glob$sets$method = glob$sets$method[glob$sets$method %in% just.methods]
@@ -46,9 +46,9 @@ taddleApp = function(taddle.dir, db.dir = file.path(taddle.dir, "db"), email.sen
 
 
 
-  shiny::addResourcePath("taddle",system.file("www", package="taddleapp"))
+  shiny::addResourcePath("taddle",system.file("www", package="semmel"))
 
-  #css.file = system.file("www/taddle.css", package="taddleapp")
+  #css.file = system.file("www/taddle.css", package="semmel")
   app$ui = fluidPage(theme=shinytheme("cerulean"),
     tags$head(
       tags$title(app.title),
