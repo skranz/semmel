@@ -58,7 +58,7 @@ serial.dictator.alloc = function(prefs, prios = runif(NROW(prefs)), slots=rep(1,
 
 #' Assignment as cost minimization problem
 #' @param prefs A matrix row=students cols=topics
-assignment.problem.alloc = function(prefs, rank.costs=seq_len(max(prefs))^2, slots=rep(1,NCOL(prefs)), no.match.cost = max(rank.costs)*1000) {
+assignment.problem.alloc = function(prefs, rank.costs=seq_len(max(prefs,na.rm=TRUE))^2, slots=rep(1,NCOL(prefs)), no.match.cost = max(rank.costs)*1000) {
   restore.point("assignment.problem.algo")
 
   has.na = any(is.na(prefs))
